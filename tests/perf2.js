@@ -1,0 +1,23 @@
+const { boot } = require('./harness');
+const H = boot(process.argv[2] || require('path').resolve(__dirname, '..'));
+const { w, G, E } = H;
+(async () => {
+  w.document.dispatchEvent(new w.Event('DOMContentLoaded')); await H.wait(100);
+  H.freshWorld(); const S = G.S; G.World.setSeed(9); S.popSize = 0;
+  for (let i = 4; i < 80; i++) E.makeNpc({ name: 'P' + i + ' Q', handle: '@p' + i, age: 20 + (i % 25), personality: ['outgoing flirty', 'shy quiet', 'sarcastic', 'kind warm'][i % 4], followers: 500 + i * 40 });
+  for (let h = 0; h < 24 * 10; h++) E.tick(60);
+  G.UI.feedLimit = 40; G.UI.go('home');
+  const T = (label, fn, n = 6) => { fn(); const t = process.hrtime.bigint(); for (let i = 0; i < n; i++) fn(); console.log(label.padEnd(34), (Number(process.hrtime.bigint() - t) / 1e6 / n).toFixed(1), 'ms'); };
+  T('feedPosts (sort/filter)', () => G.Pages.feedPosts());
+  T('Pages.home() string only', () => G.Pages.home());
+  T('Pages.side()', () => G.Pages.side());
+  T('Pages.topbar()', () => G.Pages.topbar());
+  T('UI.render() (patch, unchanged DOM)', () => G.UI.render());
+  const html = G.Pages.home();
+  T('innerHTML parse of the page', () => { w.document.querySelector('#page').innerHTML = html; });
+  const list = G.Pages.feedPosts().slice(0, 40);
+  T('40x postHTML', () => list.forEach((p) => G.UI.postHTML(p, { preview: true })));
+  T('storiesTray', () => G.UI.storiesTray());
+  console.log('html length', html.length);
+  process.exit(0);
+})().catch((e) => { console.log('ERR', e.stack.split('\n').slice(0, 3).join('\n')); process.exit(1); });

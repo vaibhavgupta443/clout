@@ -1,0 +1,16 @@
+node_modules/
+tests/node_modules/
+dist/
+site/
+media/
+vault/
+data/
+faces/
+.cache/
+.env
+.env.*
+*.log
+.check-stamp
+*.db
+*.db-shm
+*.db-wal

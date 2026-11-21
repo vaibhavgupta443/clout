@@ -1,0 +1,20 @@
+{
+  "name": "clout",
+  "private": true,
+  "description": "Clout - a local social-media life simulation (PG-13; every character is an adult)",
+  "scripts": {
+    "start": "node serve.js",
+    "build": "node tools/build.js",
+    "site": "node tools/make-site.js"
+  },
+  "optionalDependencies": {
+    "qrcode": "^1.5.4",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4"
+  }
+}

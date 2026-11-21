@@ -1,0 +1,14 @@
+{
+  "name": "clout-tests",
+  "private": true,
+  "scripts": {
+    "test": "node run-all.js",
+    "test:quick": "node run-all.js --quick",
+    "test:live": "node run-all.js --quick --live"
+  },
+  "dependencies": {
+    "jsdom": "^26.0.0",
+    "puppeteer-core": "^24.0.0",
+    "fake-indexeddb": "^6.0.0"
+  }
+}

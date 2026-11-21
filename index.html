@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>Clout — Social Media Life Sim</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☁️</text></svg>">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Clout">
+<meta name="format-detection" content="telephone=no">
+<script>
+/* first paint: pick the saved theme before anything is drawn (the app sets the same value again once it starts) */
+try { var t = (JSON.parse(localStorage.getItem('clout_settings_v1')) || {}).theme; document.documentElement.setAttribute('data-theme', t === 'dark' || t === 'amoled' ? t : 'light'); } catch (e) {}
+</script>
+<style>
+/* splash: painted with the very first frame, before ~800 KB of script is downloaded and parsed; the first real screen replaces it */
+#splash{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px 16px;background:var(--c-bg,#fafbfc);color:var(--c-text,#14181f);font:600 15px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+#splash .sp-logo{font-size:30px;font-weight:600;letter-spacing:-.03em;color:var(--c-text,#14181f)}
+#splash .sp-bars{width:min(260px,70vw);display:grid;gap:10px}
+#splash .sp-bars i{display:block;height:10px;border-radius:99px;background:linear-gradient(90deg,var(--c-surface-2,#f2f4f7) 25%,var(--c-surface-3,#e8ebf0) 50%,var(--c-surface-2,#f2f4f7) 75%);background-size:300% 100%;animation:spsh 1.3s linear infinite}
+#splash .sp-bars i:nth-child(2){width:78%}#splash .sp-bars i:nth-child(3){width:52%}
+@keyframes spsh{from{background-position:100% 0}to{background-position:-100% 0}}
+@media (prefers-reduced-motion:reduce){#splash .sp-bars i{animation:none}}
+</style>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app"><div id="splash" role="status" aria-label="Loading"><div class="sp-logo">Clout</div><div class="sp-bars"><i></i><i></i><i></i></div></div></div>
+<div id="progress"></div>
+<div id="toasts"></div>
+<div id="modal-root"></div>
+<div id="story-root"></div>
+<script src="vendor/vader.js"></script>
+<script src="vendor/morphdom.js"></script>
+<!-- graphology (+library), chrono and compromise (~850 KB) are NOT listed here: G.lazy() (js/db.js) injects them after the first screen -->
+<script src="js/util.js"></script>
+<script src="js/db.js"></script>
+<script src="js/store.js"></script>
+<script src="js/global/limits.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/lexicon.js"></script>
+<script src="js/persona.js"></script>
+<script src="js/voice.js"></script>
+<script src="js/bank.js"></script>
+<script src="js/media.js"></script>
+<script src="js/mem.js"></script>
+<script src="js/social.js"></script>
+<script src="js/react.js"></script>
+<script src="js/world.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/memory.js"></script>
+<script src="js/extras.js"></script>
+<script src="js/population.js"></script>
+<script src="js/scenarios.js"></script>
+<script src="js/pages.js"></script>
+<script src="js/pages2.js"></script>
+<script src="js/pages3.js"></script>
+<script src="js/rag.js"></script>
+<script src="js/directives.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/reasons.js"></script>
+<script src="js/channels.js"></script>
+<script src="js/goals.js"></script>
+<script src="js/clock.js"></script>
+<script src="js/faces.js"></script>
+<script src="js/trends.js"></script>
+<script src="js/pitches.js"></script>
+<script src="js/vault.js"></script>
+<script src="js/refs.js"></script>
+<script src="js/leads.js"></script>
+<script src="js/tier.js"></script>
+<script src="js/fame.js"></script>
+<script src="js/memplus.js"></script>
+<script src="js/mind.js"></script>
+<script src="js/dialogue.js"></script>
+<script src="js/bonds.js"></script>
+<script src="js/rep.js"></script>
+<script src="js/seasons.js"></script>
+<script src="js/chapters.js"></script>
+<script src="js/plans.js"></script>
+<script src="js/moments.js"></script>
+<script src="js/recap.js"></script>
+<script src="js/rhythm.js"></script>
+<script src="js/admin.js"></script>
+<script src="vendor/leaflet.js"></script>
+<script src="js/stories.js"></script>
+<script src="js/live.js"></script>
+<script src="js/selftest.js"></script>
+<script src="js/main.js"></script>
+<script src="js/studio.js"></script>
+<script src="js/around.js"></script>
+<script src="js/single.js"></script>
+<script src="js/minimal.js"></script>
+</body>
+</html>
