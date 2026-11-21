@@ -56,6 +56,7 @@ npm run test:live      # + a live run against a FREE OpenRouter model (zero cost
 | plans.js | outings with real times: a clique proposes (at most 1 per 3 days, real reason), RSVP chips, the clock holds, one shared memory for all attendees, bounded dip + "you missed it" when skipped, cap 12, round-trip |
 | moments.js | milestone moments: one 3-card moment per stage change / confession / makeup / breakup / betrayal, dedupe, queue cap 3, choices clamped by vetRel, replay list, history cap 30 |
 | rep.js | Reputation and PR: four standings, hostile post lowers Press and filters offers, lay low, public apology via the approval queue, no keys without a write |
+| demo-world.js | the free demo start: 14 people, populated feed, adults only, no model call, the world ticks for free |
 | chapters.js | weekly chapters (title, up to 4 beats, who changed; no meta lines), cap 12, album of ids cap 40 evicting oldest, titles awarded once with a read-only perk bonus, no keys before a write, round-trip |
 | seasons.js | town arcs: at most one active, one choice applied once, NPC reactions through DMs and channels, no NPC top-level posts, save round-trip |
 | economy.js | follower growth has diminishing returns, saturates at the population ceiling, and replies do not grow or count as standalone posts |

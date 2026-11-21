@@ -52,6 +52,10 @@
     const s = G.settings;
     return `<div class="start wide">
       <div class="hero small"><div class="bigicon">☁️</div><h1>New world</h1></div>
+      <div class="card"><h3>No API key? Try the free demo</h3>
+        <p class="muted small">A ready-made town of 14 people. The simulation (memory, moods, gossip, relationships) runs with no model and no cost. Add an AI key later to let the Director and the line bank write for the cast.</p>
+        <div class="row"><button class="btn primary" data-act="demoWorld">Open the demo town</button></div>
+      </div>
       <div class="card"><h3>1 · AI</h3>${P.providerBlock(false)}</div>
       <div class="card"><h3>2 · The world</h3>
         <div class="presets">${PRESETS.map(

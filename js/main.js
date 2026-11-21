@@ -987,6 +987,34 @@
       }
     });
 
+  // A ready-made town for first-time visitors with no API key: no model call, the free simulation runs it.
+  A.demoWorld = () =>
+    safe(async () => {
+      E.createBlankWorld({
+        name: 'Alex Rivera', handle: 'alex', bio: 'new in town, mostly here for the gossip', traits: ['Funny', 'Kind'], fame: 'rising', emoji: '😎',
+        worldName: 'Demo Town', premise: 'A friendly small town online where everyone knows everyone.',
+      });
+      const S = G.S;
+      const cast = G.Pop.pool(14).map((p) => ({ p, n: G.Pop.meet(p.idx, { status: 'friend', aff: 24, trust: 18 }) })).filter((x) => x.n);
+      const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+      const lines = [
+        (p) => `${cap(p.vibes[0])} kind of day. ${cap(p.likes[0])} is the only thing on my mind.`,
+        (p) => `Hot take: ${p.likes[0]} is underrated and I will not be taking questions.`,
+        (p) => `${cap(p.likes[1] || p.likes[0])} after work, no notes.`,
+        (p) => `Anyone else in ${p.hood} awake? Asking for a ${p.vibes[1]} friend.`,
+      ];
+      cast.forEach(({ p, n }, i) => {
+        E.addPost({ author: n.id, text: lines[i % lines.length](p), buzz: 2 + (i % 4), t: Math.max(1, S.clock - (cast.length - i) * 37) });
+      });
+      E.addChron('Alex joined Demo Town');
+      if (G.World && G.World.seedStories) G.World.seedStories(S);
+      G.Store.save();
+      P.wiz.showWizard = false;
+      UI.page = 'home';
+      UI.thread = null;
+      UI.render();
+    });
+
   A.blankWorld = () =>
     safe(async () => {
       const w = P.wiz;
